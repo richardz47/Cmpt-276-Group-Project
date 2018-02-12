@@ -1,7 +1,20 @@
 class User < ApplicationRecord
-    validates :name, presence: true, length: {maximum: 100}, format: {with: /(?=.*[a-zA-Z ]).+/}
-    validates :email, presence: true, length: {maximum: 100}, format: {with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i}, uniqueness: {case_sensitive: false}
+	validates :username, :email, :password, #all must be present and < 30 chars
+			length: {maximum: 30}, 
+			presence: true
 
-    has_secure_password
-    validates :password, presence: true, length: {minimum: 7, maximum: 50}, format: {with: /(?=.*[A-Z])+(?=.*[a-z])+(?=.*[0-9]).+/}
+	validates  :email, format: {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/,
+			message: "email must be of form: example@email.com"},
+			uniqueness: true 
+
+	validates :username, format: {with: /\A[a-z0-9\-_]+\Z/,
+			message: "may contain letters, numbers, and underscores only"},
+			length: {minimum: 3}
+
+	validates :password, length: {minimum: 5},
+			format: {with: /\A[a-z0-9]+\z/i,
+			message: "may contain letters and numbers only, case sensitive"},
+			confirmation: true
+ 
+
 end

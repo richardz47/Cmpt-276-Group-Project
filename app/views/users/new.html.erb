@@ -1,9 +1,42 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>Sign Up</title>
-	</head>
-	<body>
-		<p>This is where the sign up page will be.</p>
-	</body>
-</html>
+<h1>Create New User </h1>
+
+<%= form_with scope: :user, url: users_path, local: true do |form| %>
+<!-- show error message -->
+<% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@user.errors.count, "error") %> 
+      </h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<!-- form -->
+  <p>
+    <%= form.label :email %><br>
+    <%= form.text_field :email %>
+  </p>
+
+  <p>
+  	<%= form.label :username %><br>
+  	<%= form.text_field :username %>
+  </p>
+ 
+  <p>
+    <%= form.label :password %><br>
+    <%= form.text_field :password %>
+  </p>
+
+  <p>
+    <%= form.label :password_confirmation, "confirm password"  %><br>
+    <%= form.text_field :password_confirmation %>
+  </p> 
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
