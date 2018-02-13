@@ -1,0 +1,21 @@
+<% if @user.created_at.to_date == Date.current %> 
+<header>
+	<h1>
+    	<%= @user.id %>'s homepage <br>
+	</h1>
+</header>
+
+<p>
+	welcome to autoCalendar
+</p>
+
+<% else %>
+    <header>
+	<h1>
+    	<%= @user.id %>'s homepage <br>
+	</h1>
+</header>
+<p>
+	welcome back
+</p>
+<% end %>
