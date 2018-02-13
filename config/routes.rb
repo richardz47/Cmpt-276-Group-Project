@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   root 'welcome#home'
 
-
+  #login form
+	get '/login' => 'sessions#new'
+	#logging in
+	post '/login' => 'sessions#create'
+	#logging out
+	get '/logout' => 'sessions#destroy'
   
   
   get '/signup', to: 'users#new'
