@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Welcome to the Auto Calender App</title>
-	</head>
+<h1>AutoCalendar</h1>
+
 	<body>
 		<p>
-		This will be the page for when the user first visits the app. Will add new things later.<br>
-		<%= link_to "Sign up!", signup_path %>
+		<%= link_to("sign up", 
+		{:controller => 'users',
+		:action => 'new'}) %>
+		</p> 
+		<p>
+		<%= link_to("login", 
+		{:controller => 'users',
+		:action => 'new'}) %>
 		</p>
 	</body>
 </html>
