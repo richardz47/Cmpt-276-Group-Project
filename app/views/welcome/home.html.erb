@@ -4,12 +4,14 @@
 
 	<body>
 		<p>
-		<%= link_to("sign up", 
+		<%= link_to("Sign up", 
 		{:controller => 'users',
 		:action => 'new'}) %>
 		</p> 
 		<p>
-			login (will add once login page is done)
+		<%= link_to("Log in", 
+		{:controller => 'sessions',
+		:action => 'new'}) %>
 		</p>
 	</body>
 </html>
