@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   #logging in
   post '/login', to: 'sessions#create'
   #logging out
-  get '/logout', to: 'sessions#destroy'
+  delete '/logout', to: 'sessions#destroy'
 
   resources :users
 
