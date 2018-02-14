@@ -59,7 +59,7 @@
 	<div id="log">
 		<%= form_tag '/login' do %>
 
-		  <p><div id="EmailTex">Email</div> <%= text_field_tag :email %> </p>
+		  <p><div id="EmailTex">Email</div> <%= email_field_tag :email %> </p>
 		  <p><div id="PasswordTex">Password</div> <%= password_field_tag :password %> </p>
 		  <p><%= submit_tag "Login",:id=> "sub" %> </p>
 
