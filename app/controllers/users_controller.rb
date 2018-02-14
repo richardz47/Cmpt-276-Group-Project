@@ -4,7 +4,9 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		if @user != current_user
+		if @user != current_user && logged_in?
+			redirect_to current_user
+		elsif @user != current_user
 			redirect_to root_url
 		end
 	end
