@@ -1,11 +1,81 @@
-<title>Log in</title>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<style type="text/css">
+	body{
+		/*background-image: url("https://upload.wikimedia.org/wikipedia/commons/0/0d/Rakotzbr%C3%BCcke.jpg"); Liscenced under Creative Commons - see https://commons.wikimedia.org/wiki/File:Rakotzbr%C3%BCcke.jpg*/
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+	#log{
 
-<h1>Login!</h1>
+		border-radius: 25px;
+		display: table;
+		vertical-align: middle;
+		margin: 0 auto;
+		width: 350px;
+		max-width: 100%;
+		background-color: rgba(230,230,230,0.8);
+		text-align: center;
+	}
+	#outer{
+		/*padding-top: 190px;*/
 
-<%= form_tag '/login' do %>
+		display: table;
+		position: absolute;
+		height: 100%;
+		width: 100%;
+	}
+	#email, #password{
+		background-color: #ffffff;
+		border-radius: 10px;
+		width: 300px;
+		height: 35px;
+		font-size: 24px;
+		text-align: left;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	#sub{
+		border-radius: 10px;
+		width: 250px;
+		height: 40px;
+		font-size: 24px;
+		background-color: #c5cdcf;
+		color: black;
+	}
+	#EmailTex, #PasswordTex{
+		font-size: 24px;
+		font-family: Arial, Helvetica, sans-serif;
+		text-align: left;
+		padding-left: 24px
+	}
+	</style>
 
-  <p>Email: <%= text_field_tag :email %> </p>
-  <p>Password: <%= password_field_tag :password %> </p>
-  <p><%= submit_tag "Submit" %> </p>
+</head>
+<body>
+	<!--h1>Login!</h1-->
+	<div id="outer">
+	<div id="log">
+		<%= form_tag '/login' do %>
 
-<% end %>
+		  <p><div id="EmailTex">Email</div> <%= text_field_tag :email %> </p>
+		  <p><div id="PasswordTex">Password</div> <%= password_field_tag :password %> </p>
+		  <p><%= submit_tag "Login",:id=> "sub" %> </p>
+
+		<% end %>
+	</div>
+	</div>
+	<script type="text/javascript">
+		var a = [
+			"https://upload.wikimedia.org/wikipedia/commons/0/0d/Rakotzbr%C3%BCcke.jpg"/*Liscenced under Creative Commons - see https://commons.wikimedia.org/wiki/File:Rakotzbr%C3%BCcke.jpg*/,
+			"http://www.publicdomainpictures.net/pictures/240000/velka/scenic-landscape-1507476866DSn.jpg"/*Liscenced under Creative Commons - CC0*/,
+			"http://www.publicdomainpictures.net/pictures/50000/velka/the-scenic-route.jpg"/*Liscenced under Creative Commons - CC0*/,
+			"https://upload.wikimedia.org/wikipedia/commons/3/33/Scenic_View_%40_Park_View_Hotel_%E2%80%93_Hualien%2C_Taiwan_%283981419562%29.jpg"/*Liscenced under Creative Commons - see https://commons.wikimedia.org/wiki/File:Scenic_View_@_Park_View_Hotel_%E2%80%93_Hualien,_Taiwan_(3981419562).jpg*/
+			]
+		document.body.style.backgroundImage = `url(${a[Math.ceil(Math.random()*10000)%a.length]})`;
+	</script>
+</body>
+</html>
+
+
