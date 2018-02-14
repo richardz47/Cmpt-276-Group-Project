@@ -6,4 +6,16 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  def current_user
+		@current_user ||= User.find(session[:user_id]) if session[:user_id]
+	end
+
+	def logged_in?
+		!current_user.nil?
+  end
+  
+  def return_user_id
+    return @current_user.id
+  end
 end

@@ -7,13 +7,15 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "reject invalid inputs" do
-    post users_path, params: {user: {username: "", email: "", password: "", password_confirmation: ""}}
-    assert_not_equal(3, User.count)
+    post signup_path, params: {user: {username: "", email: "", password: "", password_confirmation: ""}}
+    assert_equal(1, User.count)
   end
 
-  test "new user should be created and redirected" do
-    post users_path, params: {user: {username: "test", email: "test@test.com", password: "12345", password_confirmation: "12345"}}
-    assert_equal(3, User.count)
+  test "new user should be created,logged in, and redirected" do
+    post signup_path, params: {user: {username: "test", email: "test@test.com", password: "12345", password_confirmation: "12345"}}
+    assert_equal(2, User.count)
+    assert logged_in?
+    assert_redirected_to ("/users/" + ((return_user_id).to_s)) 
   end
 
 end
