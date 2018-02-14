@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 		#finds the user using the email provided
 		user = User.find_by(email:)
 		#determine if password is correct
-		if user.password == password
+		if user.password == password:
 			password_correct = true
 		else
 			password_correct = false
