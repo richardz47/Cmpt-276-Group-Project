@@ -1,22 +1,95 @@
 <!DOCTYPE html>
 <html>
-<title>Welcome to AutoCalender</title>
 <h1>AutoCalendar</h1>
 
 	<body>
-	<% if !(logged_in?) %>
-		<p>
-		<%= link_to("Sign up", 
-		{:controller => 'users',
-		:action => 'new'}) %>
-		</p> 
-		<p>
-		<%= link_to("Log in", 
-		{:controller => 'sessions',
-		:action => 'new'}) %>
-		</p>
-	<% else %>
-	<p> Already logged in, so nothing should display here. </p>
-	<% end %>
+		<div class="wrap">
+			<div id="arrowL" class="arrow"></div>
+			<div id="slider">
+				<div class="slide slide1">
+					<div class="slideContent">
+						<span class="span1">Welcome to AutoCalendar
+								<% if !(logged_in?) %>
+									<p class = "signup">
+										<%= link_to("Sign up", {:controller => 'users',:action => 'new'}) %>
+									</p> 
+		
+									<p class = "login">
+										<%= link_to("Log in", {:controller => 'sessions',	:action => 'new'}) %>
+									</p>
+								<% else %>
+									<p> Already logged in, so nothing should display here. </p>
+								<% end %>
+						</span>
+					</div>
+				</div>
+
+				<div class="slide slide2">
+					<div class="slideContent">
+						<span class="span2">Welcome</span>
+					</div>
+				</div>
+
+				<div class="slide slide3">
+					<div class="slideContent">
+						<span class="span3">Welcome</span>
+					</div>
+				</div>
+			</div>
+			<div id="arrowR" class="arrow"></div>
+		</div>
+		<script>
+			let sliderImages = document.querySelectorAll('.slide');
+			let	arrowR = document.getElementById('arrowR');
+			let arrowL = document.getElementById('arrowL');
+			let current = 0;
+
+			function reset()
+			{
+				let length = sliderImages.length;
+				for(let i=0;i<length; i++)
+				{
+					sliderImages[i].style.display = 'none';
+				}
+			}
+			function startSlide()
+			{
+				reset();
+				sliderImages[0].style.display = 'block'; 
+			}
+
+			function slideLeft(){
+				reset();
+				sliderImages[current - 1].style.display = 'block';
+				current --;
+			}
+			function slideRight(){
+				reset();
+				sliderImages[current + 1].style.display = 'block';
+				current ++;
+			}
+
+			arrowL.addEventListener('click',function(){
+				if(current === 0){
+					current = sliderImages.length;
+				}
+				slideLeft();
+			})
+
+			arrowR.addEventListener('click',function(){
+				if(current === 2){
+					current = -1;
+				}
+				slideRight();
+			})
+			startSlide();
+
+		</script>
+
+
+
+
+
 	</body>
 </html>
+
