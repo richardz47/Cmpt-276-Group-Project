@@ -46,10 +46,10 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 end
 
-group :production do
+#group :production do
   # Use Postgres during production
-  gem 'pg', '0.20.0'
-end
+#  gem 'pg', '0.20.0'
+#end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
