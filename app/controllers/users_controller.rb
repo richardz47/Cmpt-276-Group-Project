@@ -26,6 +26,7 @@ class UsersController < ApplicationController
 		@user = User.new(params.require(:user).permit(:email, :username, :password, :password_confirmation))
 
 		if	@user.save
+			session[:user_id] = @user.id
 			redirect_to @user
 		else
 			render 'new'
