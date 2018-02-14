@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   
   #login form
-	get '/login' => 'sessions#new'
-	#logging in
-	post '/login' => 'sessions#create'
-	#logging out
-	get '/logout' => 'sessions#destroy'
+  get '/login', to: 'sessions#new'
+  #logging in
+  post '/login', to: 'sessions#create'
+  #logging out
+  get '/logout', to: 'sessions#destroy'
 
   resources :users
 
