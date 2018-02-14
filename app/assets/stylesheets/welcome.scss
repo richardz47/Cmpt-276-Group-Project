@@ -1,3 +1,142 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body,h1{
+	overflow-x: hidden;	
+}
+h1{
+	margin: 0;
+	padding: 0;
+	height: fixed;
+	width: 100%;
+
+	text-align: center;
+	background-color: #000000;
+	color: white;
+	font-family: 'Hind Madurai', sans-serif;
+	font-weight: bold;
+	font-size: 40px;
+	top: 0;
+	background-size: cover;
+}
+
+body,html,#slider,.wrap,.slideContent
+{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.wrap{
+	position:relative
+}
+
+.slide{
+	height:100%;
+	width:100%;
+	background-size:cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.slide1{
+	background-image: url('images/work.jpeg');
+}
+.slide2{
+	background-image: url('images/meeting.jpg');
+}
+.slide3{
+	background-image: url('images/sport.jpeg');
+}
+
+.slideContent{
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: cneter;
+	text-align: center;
+}
+
+.span1{
+	font-family: 'Hind Madurai', sans-serif;
+	color: rgb(0,0,0);
+	font-size: 40px;
+}
+
+.span2{
+	font-family: 'Hind Madurai', sans-serif;
+	color: rgb(248, 184, 129);
+	font-size: 40px;
+}
+
+.span3{
+	font-family: 'Hind Madurai', sans-serif;
+	color: rgb(255,255,255);
+	font-size: 40px;
+}
+
+.arrow{
+	cursor:pointer;
+	position: absolute;
+	top: 50%;
+	margin-top: -30px;
+	width: 0;
+	height: 0;
+	border-style: solid;
+}
+
+#arrowL{
+	border-width: 30px 40px 30px 0;
+	border-color: transparent white transparent transparent;
+	left: 0;
+	margin-left: 20px;
+}
+
+#arrowR{
+	border-width: 30px 0 30px 40px;
+	border-color: transparent transparent transparent white;
+	right: 0;
+	margin-right: 20px;
+}
+
+
+.signup a{
+   text-decoration: none !important;
+   color: rgb(0,0,0);
+   border: solid;
+   border-width:4.5px;
+   padding: 1px 20px;
+   border-radius: 20px;
+}
+
+.login a{
+   text-decoration: none !important;
+   color: rgb(0,0,0);
+   border: solid;
+   border-width:4.5px;
+   padding: 1px 32px;
+   border-radius: 20px;
+}
+
+.login:hover
+{
+	color:white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
