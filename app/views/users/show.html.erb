@@ -1,7 +1,7 @@
 <% if @user.created_at.to_date == Date.current %> 
 <header>
 	<h1>
-    	<%= @user.id %>'s homepage <br>
+    	<%= @user.username %>'s homepage <br>
 	</h1>
 </header>
 
@@ -12,7 +12,7 @@
 <% else %>
     <header>
 	<h1>
-    	<%= @user.id %>'s homepage <br>
+    	<%= @user.username %>'s homepage <br>
 	</h1>
 </header>
 <p>

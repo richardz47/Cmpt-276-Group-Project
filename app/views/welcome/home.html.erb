@@ -3,6 +3,7 @@
 <h1>AutoCalendar</h1>
 
 	<body>
+	<% if !(logged_in?) %>
 		<p>
 		<%= link_to("Sign up", 
 		{:controller => 'users',
@@ -13,5 +14,8 @@
 		{:controller => 'sessions',
 		:action => 'new'}) %>
 		</p>
+	<% else %>
+	<p> Already logged in, so nothing should display here. </p>
+	<% end %>
 	</body>
 </html>
