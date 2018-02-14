@@ -1,23 +1,39 @@
-<title><%= @user.username%>'s profile</title>
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= @user.username%>'s profile</title>
+	<style type="text/css">
+	body{
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-image: url("https://upload.wikimedia.org/wikipedia/commons/5/51/Study_%2816840395246%29.jpg");/*Creative Commons - see https://commons.wikimedia.org/wiki/File:Study_(16840395246).jpg*/
+	}
+	</style>
+</head>
+<body>
+	<% if @user.created_at.to_date == Date.current %> 
+	<header>
+		<h1>
+			<%= @user.username %>'s homepage <br>
+		</h1>
+	</header>
 
-<% if @user.created_at.to_date == Date.current %> 
-<header>
-	<h1>
-    	<%= @user.username %>'s homepage <br>
-	</h1>
-</header>
+	<p>
+		Welcome to AutoCalendar. More stuff will be added here in the future.
+	</p>
 
-<p>
-	welcome to autoCalendar
-</p>
+	<% else %>
+	<header>
+		<h1>
+			<%= @user.username %>'s homepage <br>
+		</h1>
 
-<% else %>
-    <header>
-	<h1>
-    	<%= @user.username %>'s homepage <br>
-	</h1>
-</header>
-<p>
-	welcome back
-</p>
-<% end %>
+	</header>
+	<p>
+		Welcome back. More stuff will be added here in the future
+	</p>
+	<% end %>
+</body>
+</html>
+
+
