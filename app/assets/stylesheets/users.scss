@@ -1,3 +1,58 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.background{
+    background: url("images/laptop.jpeg");
+    margin: 0;
+    padding: 0;
+    height: fixed;
+    width: 100%;
+    top: 0;
+    background-size: cover;
+  }
+
+#wrap{
+		/*padding-top: 190px;*/
+		position: relative;
+		display: table;
+		position: absolute;
+		height: 100%;
+		width: 100%;
+  	}
+#outter{
+		border-radius: 25px;
+		display: table;
+		position: absolute;
+		top: 25%;
+		transform: translateY(-50%);
+		left: 50%;
+		transform: translateX(-50%);
+		margin: 0 auto;
+		width: 350px;
+		max-width: 100%;
+		background-color: rgba(230,230,230,0.6);
+		text-align: center;
+}
+
+.banner{
+	background: black;
+}
+.t1,.t2,.t3,.t4{
+	  font-family: 'Hind Madurai', sans-serif;
+}
+
+#sub{
+	border-radius: 10px;
+	width: 250px;
+	height: 40px;
+	font-size: 24px;
+	background-color: #c5cdcf;
+	color: black;
+}
+
+#error_explanation{
+   font-family: 'Hind Madurai', sans-serif;
+   background-color: rgba(0,0,0,0.6);;
+   color: white;
+}
