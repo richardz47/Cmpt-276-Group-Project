@@ -10,7 +10,7 @@
   <body>
     <div class="banner">
       <%= link_to "AutoCalender (Logo for app goes here)", root_path, id: "logo" %>
-      <% if logged_in? %>
+      <% if check_logged_in %>
         <%= link_to "Log Out", logout_path, method: :delete, id: "logOut" %>
       <% end %>
     </div>

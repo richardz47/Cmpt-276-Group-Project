@@ -11,11 +11,8 @@ class ActiveSupport::TestCase
 		@current_user ||= User.find(session[:user_id]) if session[:user_id]
 	end
 
-	def logged_in?
+	def check_logged_in
 		!current_user.nil?
   end
-  
-  def return_user_id
-    return @current_user.id
-  end
+
 end

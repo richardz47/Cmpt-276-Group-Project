@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		if @user != current_user && logged_in?
+		if @user != current_user && check_logged_in
 			redirect_to current_user
 		elsif @user != current_user
 			redirect_to root_url
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 	end
 
 	def new
-		if logged_in?
+		if check_logged_in
 			redirect_to current_user
 		else 
 			@user = User.new

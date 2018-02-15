@@ -9,7 +9,7 @@
 				<div class="slide slide1">
 					<div class="slideContent">
 						<span class="span1">Welcome to AutoCalendar
-								<% if !(logged_in?) %>
+								<% if !(check_logged_in) %>
 									<p class = "signup">
 										<%= link_to("Sign up", {:controller => 'users',:action => 'new'}) %>
 									</p> 
