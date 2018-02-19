@@ -8,7 +8,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
 
   test "valid login info" do
     @test = users(:test)
-    post login_path, params: {email: @test.email, password: @test.password}
+    post login_path, params: {email: @test.email, password: '12345'}
     assert check_logged_in
     assert_redirected_to ("/users/" + ((@test.id).to_s))
   end

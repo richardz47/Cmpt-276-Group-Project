@@ -3,7 +3,9 @@ class ApplicationController < ActionController::Base
   
   #looks up the user and sees if they're logged in and keeps track of it in @current_user
 	def current_user
-		@current_user ||= User.find(session[:user_id]) if session[:user_id]
+		if User.count > 0
+			@current_user ||= User.find(session[:user_id]) if session[:user_id]
+		end
 	end
 
 	def check_logged_in

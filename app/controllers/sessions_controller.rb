@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
 
 		# if user exists + password is right
 		if user
-			if password == user.password
+			if user.authenticate(password)
 				# save the user id in cookie so that they stay logged in
 				session[:user_id] = user.id
 				redirect_to user

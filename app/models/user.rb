@@ -11,6 +11,7 @@ class User < ApplicationRecord
 			message: "may contain letters, numbers, and underscores only"},
 			length: {minimum: 3}
 
+	has_secure_password
 	validates :password, length: {minimum: 5},
 			format: {with: /\A[a-z0-9]+\z/i,
 			message: "may contain letters and numbers only, case sensitive"},
