@@ -28,6 +28,9 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 
+# For the Calendar
+gem "simple_calendar", "~> 2.0"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require simple_calendar
  */
 
  @import url('https://fonts.googleapis.com/css?family=Hind+Madurai:700');
