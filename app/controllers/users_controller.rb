@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+	#must be logged in to change user settings, working on a seperate page for changing the password
+	before_action :authenticate_user, only: [:edit]
+	
 	def index
 	end
 
@@ -32,7 +35,19 @@ class UsersController < ApplicationController
 			render 'new'
 		end
 	end
+	def edit
+	  @user = User.find(params[:id])
+	end
 
+	def update
+		@user = User.find(params[:id])
+
+	    if @user.update(params.require(:user).permit(:email, :username, :password)) 
+			redirect_to @user
+		else 
+			render 'edit'
+		end
+	end
 
 	def destroy
 	end
