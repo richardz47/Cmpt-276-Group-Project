@@ -79,11 +79,6 @@ body,html,#slider,.wrap,.slideContent
 	font-size: 40px;
 }
 
-.span3{
-	font-family: 'Hind Madurai', sans-serif;
-	color: rgb(255,255,255);
-	font-size: 40px;
-}
 
 .arrow{
 	cursor:pointer;
@@ -128,16 +123,18 @@ body,html,#slider,.wrap,.slideContent
    border-radius: 20px;
 }
 
-.login:hover
-{
-	color:white;
+
+
+.Explore a{
+   font-family: 'Hind Madurai', sans-serif;
+   font-size: 40px;
+   text-decoration: none !important;
+   color: rgb(255,255,255);
+   border: solid;
+   border-width:4.5px;
+   padding: 10px 32px;
+   border-radius: 20px;
 }
-
-
-
-
-
-
 
 
 
