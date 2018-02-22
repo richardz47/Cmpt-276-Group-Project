@@ -16,5 +16,7 @@ class ApplicationController < ActionController::Base
 
 	helper_method :check_logged_in
  
-
+	def authenticate_user
+		redirect_to '/login' unless current_user
+	end
 end
