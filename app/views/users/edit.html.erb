@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>User Settings</h1>
+
+
+ 
+<%= form_with model: @user, local: true do |form| %>
+ 
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <p>
+        <%= pluralize(@user.errors.count, "error")%>  prohibited this message from being saved: 
+      </p>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+<!-- form -->
+<div id = "wrap">
+  <div id = "outter">
+  <p>
+    <div class= "t1"><%= form.label :email %></div><br>
+    <div class = "email"><%= form.text_field :email %></div>
+  </p>
+
+  <p>
+    <div class= "t2"><%= form.label :username %></div><br>
+    <div class="name"><%= form.text_field :username %></div>
+  </p>
+ 
+  <p>
+    <div class= "t2"><%= form.label :password %></div><br>
+    <div class="name"><%= form.text_field :password %></div>
+  </p>
+
+
+
+  <p>
+    <%= form.submit :id=> "sub"%>
+  </p>
+  </div>
+</div>
+ 
+   <script type="text/javascript">
+    var a = [
+      "https://upload.wikimedia.org/wikipedia/commons/0/0d/Rakotzbr%C3%BCcke.jpg"/*Liscenced under Creative Commons - see https://commons.wikimedia.org/wiki/File:Rakotzbr%C3%BCcke.jpg*/,
+      "http://www.publicdomainpictures.net/pictures/240000/velka/scenic-landscape-1507476866DSn.jpg"/*Liscenced under Creative Commons - CC0*/,
+      "http://www.publicdomainpictures.net/pictures/50000/velka/the-scenic-route.jpg"/*Liscenced under Creative Commons - CC0*/,
+      "https://upload.wikimedia.org/wikipedia/commons/3/33/Scenic_View_%40_Park_View_Hotel_%E2%80%93_Hualien%2C_Taiwan_%283981419562%29.jpg"/*Liscenced under Creative Commons - see https://commons.wikimedia.org/wiki/File:Scenic_View_@_Park_View_Hotel_%E2%80%93_Hualien,_Taiwan_(3981419562).jpg*/
+      ]
+    document.body.style.backgroundImage = `url(${a[Math.ceil(Math.random()*10000)%a.length]})`;
+  </script>
+
+<% end %>
+</body>
+</html>
+
