@@ -40,14 +40,14 @@
 			<div id="arrowR" class="arrow"></div>
 		</div>
 		<script>
-			let sliderImages = document.querySelectorAll('.slide');
-			let	arrowR = document.getElementById('arrowR');
-			let arrowL = document.getElementById('arrowL');
-			let current = 0;
+			var sliderImages = document.querySelectorAll('.slide');
+			var	arrowR = document.getElementById('arrowR');
+			var arrowL = document.getElementById('arrowL');
+			var current = 0;
 
 			function reset()
 			{
-				let length = sliderImages.length;
+				var length = sliderImages.length;
 				for(let i=0;i<length; i++)
 				{
 					sliderImages[i].style.display = 'none';
