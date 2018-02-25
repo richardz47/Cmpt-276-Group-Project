@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get '/newevent', to: 'events#new'
   post '/newevent', to: 'events#create'
   
-  events GET    /events(.:format)          events#index
+  get '/events', to: 'events#index'
 
   get '/displayevents', to: 'events#display'
 
