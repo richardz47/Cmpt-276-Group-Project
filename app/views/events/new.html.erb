@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-<h1>new event</h1>
+<h1>Add new event</h1>
 
 
 <%= form_with model: @event do |form| %>
@@ -28,22 +28,22 @@
   </p>
 
   <p>
-  	<div class= "t2"><%= form.label "date" %></div><br>
-  	<div class= "date"><%= form.date_field :start_time %></div>
+  	<div class= "t2"><%= form.label :start_time %></div><br>
+  	<div class= "start"><%= form.datetime_select :start_time %></div>
   </p>
  
- <!--  <p>
-    <div class= "t3"><%= form.label "time" %></div><br>
-    <div class="time"><%= form.time_field(:start) %></div>
+ <p>
+    <div class= "t3"><%= form.label :end_time %></div><br>
+    <div class="end"><%= form.datetime_select :end_time  %></div>
   </p>
 
   <p>
-    <div class= "t4"><%= form.label "end time" %></div><br>
-    <div class="end time"><%= form.time_field(:end) %></div>
-  </p> -->
+    <div class= "t4"><%= form.label :location %></div><br>
+    <div class="location"><%= form.text_field :location  %></div>
+  </p>
 
   <p>
-    <%= form.submit "add event",:id=> "sub"%>
+    <%= form.submit "Add Event",:id=> "sub"%>
   </p>
   </div>
 </div>
