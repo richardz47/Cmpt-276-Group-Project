@@ -1,2 +1,5 @@
-<h1>Events#display</h1>
-<p>Find me in app/views/events/display.html.erb</p>
+<h1>Calendar</h1>
+<%= month_calendar do |date, calenderitems | %>
+  <%= date.to_formatted_s(:short)  %>
+
+<% end %>
