@@ -1,4 +1,8 @@
 class EventsController < ApplicationController
+  def index
+    @event = Event.all
+  end
+  
   def new
     if !check_logged_in
       redirect_to root_path
