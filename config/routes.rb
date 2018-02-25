@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get '/newevent', to: 'events#new'
+  post '/newevent', to: 'events#create'
+  
+  get '/events', to: 'events#index'
+
+  get '/displayevents', to: 'events#display'
+
   root 'welcome#home'
 
   get '/about', to: 'welcome#about'
@@ -14,6 +21,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :users
+  resources :events
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -11,9 +11,24 @@
     <div class="banner">
       <%= link_to "AutoCalender (Logo for app goes here)", root_path, id: "logo" %>
       <% if check_logged_in %>
+        <%= link_to "My Calendar", displayevents_path %>
+        <%= link_to "My Profile", current_user %>
         <%= link_to "Log Out", logout_path, method: :delete, id: "logOut" %>
       <% end %>
     </div>
+    <div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 49.252612, lng: -123.122183},
+          zoom: 10
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWTEfQsPN2d_kg8ST-ReFixdVCCIJrrlI&callback=initMap"
+    async defer></script>
+
       <%= yield %>
   </body>
 </html>
