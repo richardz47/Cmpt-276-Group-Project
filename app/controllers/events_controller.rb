@@ -10,27 +10,30 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(params.require(:event).permit(:start,:end, :start_time, :name))
+    @event = Event.new(params.require(:event).permit(:name, :start_time, :end_time))
+    @event.created_by = "test"
 
+    respond_to do |format|
     if @event.save
-       flash[:message] = "Event added!"
-      redirect_to '/displayevents'
+      format.html { redirect_to @event, notice: 'Event added!' }
+      format.json { render :show, status: :created, location: @event }
     else
-      render 'new'
+      format.html { render :new }
+      format.json { render json: @event.errors, status: :unprocessable_entity }
     end
-
+  end
   end
 
   def display
-    @events = Event.all
     if !check_logged_in
       redirect_to root_path
+    else
+      @events = Event.all 
     end
   end
 
   def show
+    @event = Event.find(params[:id])
   end
 
-  def create
-  end
 end
