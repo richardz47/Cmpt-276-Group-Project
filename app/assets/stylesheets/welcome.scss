@@ -50,14 +50,15 @@ body,html,#slider,.wrap,.slideContent
 }
 
 .slide1{
-	background-image: url('https://images.pexels.com/photos/60032/time-calendar-saturday-weekend-60032.jpeg');
+	background-image: url('https://static.pexels.com/photos/297755/pexels-photo-297755.jpeg');
 }
 .slide2{
-	background-image: url('./meeting.jpg');
+	background-image: url('https://static.pexels.com/photos/386009/pexels-photo-386009.jpeg');
 }
 .slide3{
-	background-image: url('./sport.jpeg');
+	background-image: url('https://static.pexels.com/photos/551852/pexels-photo-551852.jpeg');
 }
+
 
 .slideContent{
 	display:flex;
@@ -75,7 +76,7 @@ body,html,#slider,.wrap,.slideContent
 
 .span2{
 	font-family: 'Hind Madurai', sans-serif;
-	color: rgb(248, 184, 129);
+	color: rgb(255,255,255);
 	font-size: 40px;
 }
 
@@ -129,7 +130,7 @@ body,html,#slider,.wrap,.slideContent
    font-family: 'Hind Madurai', sans-serif;
    font-size: 40px;
    text-decoration: none !important;
-   color: rgb(255,255,255);
+   color: rgb(102, 102, 255);
    border: solid;
    border-width:4.5px;
    padding: 10px 32px;
