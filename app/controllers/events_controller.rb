@@ -1,18 +1,28 @@
 class EventsController < ApplicationController
+  extend SimpleCalendar
+  
   def index
-    @event = Event.all
+    @events = Event.all
   end
   
   def new
-    if !check_logged_in
-      redirect_to root_path
-    
+    @event = Event.new
+  end
+
+  def create
+    @event = Event.new(params.require(:event).permit(:start,:end, :start_time, :name))
+
+    if @event.save
+       flash[:message] = "Event added!"
+      redirect_to '/displayevents'
     else
-      @event = Event.new
+      render 'new'
     end
+
   end
 
   def display
+    @events = Event.all
     if !check_logged_in
       redirect_to root_path
     end
