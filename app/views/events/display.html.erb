@@ -1,10 +1,37 @@
 <h1>Calendar</h1>
+
+<table style="width:75%">
+  <tr>
+    <th>Name</th>
+    <th>From</th> 
+    <th>To</th>
+  </tr>
+
+  <% @events.each do |event| %>
+
+  
+  <% if event.start_time.to_date == Date.current %>
+
+  <tr>
+    <td><%= event.name %></td>
+    <td><%= (event.start_time).strftime("%I:%M%p") %></td> 
+    <td><%= event.end_time.strftime("%I:%M%p") %></td>
+  </tr>
+  <% end %>
+  <% end %>
+
+</table>
+
+<br>
+<%= link_to("Add event", {:controller => 'events',:action => 'new'}) %>
+<br>
+
 <%= month_calendar events: @events do |date, events| %>
   <%= date.day %>
 
   <% events.each do |event| %>
     <div>
-      <%= event.name %>
+      <%= link_to event.name, event %>
     </div>
   <% end %>
 <% end %>
