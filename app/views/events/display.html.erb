@@ -11,12 +11,14 @@
 
   
   <% if event.start_time.to_date == Date.current %>
+  <% if event.created_by == current_user.email %>
 
   <tr>
     <td><%= event.name %></td>
     <td><%= (event.start_time).strftime("%I:%M%p") %></td> 
     <td><%= event.end_time.strftime("%I:%M%p") %></td>
   </tr>
+  <% end %>
   <% end %>
   <% end %>
 
@@ -30,8 +32,10 @@
   <%= date.day %>
 
   <% events.each do |event| %>
+    <% if event.created_by == current_user.email %>
     <div>
       <%= link_to event.name, event %>
     </div>
+    <% end %>
   <% end %>
 <% end %>

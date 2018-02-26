@@ -6,12 +6,16 @@ class EventsController < ApplicationController
   end
   
   def new
-    @event = Event.new
+    if check_logged_in
+      @event = Event.new
+    else 
+      redirect_to root_path
+    end
   end
 
   def create
     @event = Event.new(params.require(:event).permit(:name, :start_time, :end_time))
-    @event.created_by = "test"
+    @event.created_by = current_user.email
 
     respond_to do |format|
     if @event.save
@@ -21,7 +25,7 @@ class EventsController < ApplicationController
       format.html { render :new }
       format.json { render json: @event.errors, status: :unprocessable_entity }
     end
-  end
+    end
   end
 
   def display
@@ -34,6 +38,13 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    if check_logged_in
+      if @event.created_by != current_user.email
+        redirect_to displayevents_path
+      end
+    else
+      redirect_to root_path
+    end
   end
 
 end
