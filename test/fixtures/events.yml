@@ -1,15 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+test:
   name: MyString
   start_time: 2018-02-24 10:58:29
   end_time: 2018-02-24 10:58:29
-  created_by: MyString
-  note: MyText
-
-two:
-  name: MyString
-  start_time: 2018-02-24 10:58:29
-  end_time: 2018-02-24 10:58:29
-  created_by: MyString
+  created_by: Testing@test.com
   note: MyText
