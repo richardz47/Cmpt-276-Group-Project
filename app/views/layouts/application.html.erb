@@ -4,7 +4,37 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag    "/assets/stylesheets/calendar.css" %>
+    <style type="text/css">
+      a[href="/newevent"]{
+        padding: 5px 5px 5px 5px;
+        border-radius: 5px;
+        margin-left: 10px;
+        color: black;
+        font-size: 25px;
+        text-decoration: none;
+        background-color: rgba(200,200,200,0.8);
+        font-family: Arial, Helvetica, sans-serif
+      }
+      #calendar-heading{
+        text-align: center;
+      }
+      #calendar-heading > a{
+        padding: 5px 5px 5px 5px;
+        border-radius: 5px;
+        color: black;
+        font-size: 20px;
+        text-decoration: none;
+        background-color: rgba(200,200,200,0.8);
+        font-family: Arial, Helvetica, sans-serif
+      }
+      #calendar-heading > span{
+        padding: 5px 5px 5px 5px;
+        color: black;
+        font-size: 25px;
+        text-decoration: none;
+        font-family: Arial, Helvetica, sans-serif
+      }
+    </style>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
