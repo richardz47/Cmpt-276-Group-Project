@@ -25,7 +25,10 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
+
 # Use ActiveModel has_secure_password
+# Note, we had to use this version of bcrypt, as the default version previously placed in here caused problems
+# for heroku and when trying using the command "rails server"
 gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 
 # For the Calendar
