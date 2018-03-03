@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20180303182544) do
     t.datetime "updated_at", null: false
     t.string "location"
     t.string "auto"
+    t.string "duration"
   end
 
   create_table "users", force: :cascade do |t|
