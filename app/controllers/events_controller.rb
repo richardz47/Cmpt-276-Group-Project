@@ -14,7 +14,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(params.require(:event).permit(:name, :start_time, :end_time))
+    @event = Event.new(params.require(:event).permit(:name, :start_time, :end_time, :location, :auto))
     @event.created_by = current_user.email
 
     respond_to do |format|

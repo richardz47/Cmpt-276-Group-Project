@@ -39,6 +39,16 @@
   </p>
 
   <p>
+  <div class= "t4"><%= form.label :location %></div><br>
+  <div class="location"><%= form.text_field :location  %></div>
+  </p>
+
+  <p>
+  <div class= "t5"><%= form.label :auto %></div><br>
+  <div class="choice"><%= form.select :auto, ['Yes', 'No']  %></div>
+  </p>
+
+  <p>
     <%= form.submit "Add Event",:id=> "sub"%>
   </p>
   </div>
