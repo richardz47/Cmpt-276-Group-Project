@@ -17,6 +17,7 @@ class EventsController < ApplicationController
     @event = Event.new(params.require(:event).permit(:name, :start_time, :end_time, :location, :auto, :duration))
     @event.created_by = current_user.email
 
+    if @event.auto != 'Yes'
       respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event added!' }
@@ -26,6 +27,38 @@ class EventsController < ApplicationController
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
       end
+
+    else
+      @events = Event.all
+
+      @event.end_time = @event.start_time + (@event.duration.to_i) * 60
+
+      @events.each do |event|
+        if event.start_time.to_date == Date.current && event.created_by == current_user.email
+            if ((event.end_time >= @event.start_time) && (@event.end_time >= event.end_time))
+              @event.start_time = event.end_time + 5*60
+              @event.end_time = @event.start_time + (@event.duration.to_i) * 60
+
+            elsif ((event.start_time >= @event.start_time) && (@event.end_time >= event.start_time))
+              @event.end_time = event.start_time - 5*60
+              @event.start_time = @event.end_time - (@event.duration.to_i) * 60
+            end
+        end
+      end
+
+
+      respond_to do |format|
+        if @event.save
+          format.html { redirect_to @event, notice: 'Event added!' }
+          format.json { render :show, status: :created, location: @event }
+        else
+          format.html { render :new }
+          format.json { render json: @event.errors, status: :unprocessable_entity }
+        end
+        end
+
+  
+    end
   end
 
   def display
