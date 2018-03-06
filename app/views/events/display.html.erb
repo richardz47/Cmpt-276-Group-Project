@@ -16,13 +16,26 @@
 </style>
 
 <div id="map"></div>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWTEfQsPN2d_kg8ST-ReFixdVCCIJrrlI&callback=initMap" ></script>
+
 <script>
   var map;
   function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 49.252612, lng: -123.122183},
       zoom: 12
+    });
+
+    google.maps.event.addListenerOnce(map, 'idle', function(){
+      // do something only the first time the map is loaded
+      console.log("Map ready");
+      <% @events.each do |event| %>
+
+      <% if event.lat != nil && event.long != nil %>
+
+        console.log(`lat:`,<%= event.lat %>, `lng:`, <%= event.long %>, addMarker({lat:<%= event.lat %>, lng:<%= event.long %>}));
+
+      <% end %>
+      <% end %>
     });
   }
 
@@ -32,21 +45,8 @@
       map: map
     });
   }  
-
-google.maps.event.addListenerOnce(map, 'idle', function(){
-  // do something only the first time the map is loaded
-  console.log("Map ready");
-  <% @events.each do |event| %>
-
-  <% if event.lat != nil && event.long != nil %>
-
-    console.log(`lat:`,<%= event.lat %>, `lng:`, <%= event.long %>, addMarker({lat:<%= event.lat %>, lng:<%= event.long %>}));
-
-  <% end %>
-  <% end %>
-});
 </script>
-
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWTEfQsPN2d_kg8ST-ReFixdVCCIJrrlI&callback=initMap" ></script>
 
 <div id="outercalendar">
 <table id='eventdesc'>
