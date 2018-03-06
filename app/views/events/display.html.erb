@@ -10,6 +10,8 @@
 </style>
 
 <script>
+  $('body').insertBefore($('h1'),$('.banner'));
+  $('body').insertBefore($('.banner'),$('h1'));//Fix ordering of banner
 
   <% @events.each do |event| %>
 
