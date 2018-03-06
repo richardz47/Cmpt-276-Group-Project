@@ -29,6 +29,10 @@ class EventsController < ApplicationController
       end
 
     else
+
+      #Our Google direction API key
+      #AIzaSyD4UP1Q6w4sV6XDdJgYUbAguPd4YVhPro0
+
       @events = Event.all
 
       @event.end_time = @event.start_time + (@event.duration.to_i) * 60

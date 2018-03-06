@@ -34,6 +34,9 @@ gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'b
 # For the Calendar
 gem "simple_calendar", "~> 2.0"
 
+# For making HTTP requests to the google maps APIs
+gem 'httparty'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
