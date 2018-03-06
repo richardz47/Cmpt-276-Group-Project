@@ -32,12 +32,10 @@
       map: map
     });
   }  
-</script>
 
-<script>
-  google.maps.event.addListenerOnce(map, 'idle', function(){
-    // do something only the first time the map is loaded
-    console.log("Map ready");
+google.maps.event.addListenerOnce(map, 'idle', function(){
+  // do something only the first time the map is loaded
+  console.log("Map ready");
   <% @events.each do |event| %>
 
   <% if event.lat != nil && event.long != nil %>
@@ -47,8 +45,9 @@
   <% end %>
   <% end %>
 });
-
 </script>
+
+
 <div id="outercalendar">
 <table id='eventdesc'>
   <tr>
