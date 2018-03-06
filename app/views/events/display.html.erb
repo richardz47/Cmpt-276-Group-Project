@@ -10,9 +10,6 @@
 </style>
 
 <script>
-  $('body').insertBefore($('h1'),$('.banner'));
-  $('body').insertBefore($('.banner'),$('h1'));//Fix ordering of banner
-
   <% @events.each do |event| %>
 
   <% if event.lat != nil && event.long != nil %>
@@ -22,10 +19,10 @@
   <% end %>
   <% end %>
 
-</script>
-<script defer>
-  $('body').insertBefore($('h1'),$('.banner'));
-  $('body').insertBefore($('.banner'),$('h1'));//Fix ordering of banner
+  $(document).ready(function(){
+    $('body').insertBefore($('h1'),$('.banner'));
+    $('body').insertBefore($('.banner'),$('h1'));//Fix ordering of banner
+  })
 </script>
 
 <table style="width:75%">
