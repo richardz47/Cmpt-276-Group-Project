@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  #updat user settings
+  get '/edit', to:'users#edit'
+  patch '/edit', to: 'users#update'
+
   get '/newevent', to: 'events#new'
   post '/newevent', to: 'events#create'
   
