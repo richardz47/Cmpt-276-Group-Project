@@ -2,6 +2,26 @@
 
 <h1>Calendar</h1>
 
+<style>
+#map{
+  height: 400px;
+  width: 100%
+}
+</style>
+
+<script>
+
+  <% @events.each do |event| %>
+
+  <% if event.lat != nil && event.long != nil %>
+
+    addMarker({lat:<%= event.lat %>, lng:<%= event.long %>});
+
+  <% end %>
+  <% end %>
+
+</script>
+
 <table style="width:75%">
   <tr>
     <th>Name</th>

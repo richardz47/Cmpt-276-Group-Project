@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20180303182544) do
     t.string "location"
     t.string "auto"
     t.string "duration"
+    t.float "lat"
+    t.float "long"
   end
 
   create_table "users", force: :cascade do |t|

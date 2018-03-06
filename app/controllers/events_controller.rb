@@ -18,6 +18,23 @@ class EventsController < ApplicationController
     @event.created_by = current_user.email
 
     if @event.auto != 'Yes'
+
+      #Our Geocode API key
+      #AIzaSyBLTBPCqHrovJpQ89hsRLf0V6E0zRtW6so
+
+      position = @event.location.gsub(' ', '+')
+      request = "http://maps.googleapis.com/maps/api/geocode/json?address=" + position
+      response = HTTParty.get(request)
+
+      if (response["status"] == "OK")
+
+        x = response["results"][0]["geometry"]["bounds"]["northeast"]["lat"]
+        y = response["results"][0]["geometry"]["bounds"]["northeast"]["lng"]
+
+        @event.lat = x
+        @event.long = y
+
+      end
       respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event added!' }
@@ -76,6 +93,18 @@ class EventsController < ApplicationController
 
 
       respond_to do |format|
+        position = @event.location.gsub(' ', '+')
+        request = "http://maps.googleapis.com/maps/api/geocode/json?address=" + position
+        response = HTTParty.get(request)
+    
+        if (status == "OK")
+          x = response["results"][0]["geometry"]["bounds"]["northeast"]["lat"]
+          y = response["results"][0]["geometry"]["bounds"]["northeast"]["lng"]
+  
+          @event.lat = x
+          @event.long = y
+  
+        end
         if @event.save
           format.html { redirect_to @event, notice: 'Event added!' }
           format.json { render :show, status: :created, location: @event }
