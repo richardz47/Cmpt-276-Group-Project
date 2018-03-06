@@ -41,7 +41,7 @@
 
   <% if event.lat != nil && event.long != nil %>
 
-    addMarker({lat:<%= event.lat %>, lng:<%= event.long %>});
+    console.log(`lat:`,<%= event.lat %>, `lng:`, <%= event.long %>, addMarker({lat:<%= event.lat %>, lng:<%= event.long %>}));
 
   <% end %>
   <% end %>
