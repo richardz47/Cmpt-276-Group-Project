@@ -23,6 +23,10 @@
   <% end %>
 
 </script>
+<script defer>
+  $('body').insertBefore($('h1'),$('.banner'));
+  $('body').insertBefore($('.banner'),$('h1'));//Fix ordering of banner
+</script>
 
 <table style="width:75%">
   <tr>
