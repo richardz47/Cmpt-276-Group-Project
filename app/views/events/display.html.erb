@@ -1,7 +1,5 @@
 <title>My Calendar</title>
 
-<h1>Calendar</h1>
-
 <style>
 #map{
   height: 400px;
@@ -19,13 +17,9 @@
   <% end %>
   <% end %>
 
-  $(document).ready(function(){
-    $('body').insertBefore($('h1'),$('.banner'));
-    $('body').insertBefore($('.banner'),$('h1'));//Fix ordering of banner
-  })
 </script>
-
-<table style="width:75%">
+<div id="outercalendar">
+<table>
   <tr>
     <th>Name</th>
     <th>From</th> 
@@ -65,3 +59,4 @@
     <% end %>
   <% end %>
 <% end %>
+</div>
