@@ -98,8 +98,8 @@ class EventsController < ApplicationController
         response = HTTParty.get(request)
     
         if (status == "OK")
-          x = response["results"][0]["geometry"]["bounds"]["northeast"]["lat"]
-          y = response["results"][0]["geometry"]["bounds"]["northeast"]["lng"]
+          x = response["results"][0]["geometry"]["location"]["lat"]
+          y = response["results"][0]["geometry"]["location"]["lng"]
   
           @event.lat = x
           @event.long = y
