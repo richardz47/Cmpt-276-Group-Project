@@ -37,15 +37,39 @@ class EventsController < ApplicationController
 
       @event.end_time = @event.start_time + (@event.duration.to_i) * 60
 
+      autoDone = false
+
       @events.each do |event|
+
+        pointA = (@event.location).gsub(' ', '+')
+        pointB = (event.location).gsub(' ', '+')
+
         if event.start_time.to_date == Date.current && event.created_by == current_user.email
             if ((event.end_time >= @event.start_time) && (@event.end_time >= event.end_time))
-              @event.start_time = event.end_time + 5*60
-              @event.end_time = @event.start_time + (@event.duration.to_i) * 60
+              request = "http://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + pointB + "&destinations=" + pointA
+              response = HTTParty.get(request)
+              if (response["status"] == "OK")
+                duration = response["rows"][0]["elements"][0]["duration"]["value"]
+              else
+                duration = 0
+              end
+
+                @event.start_time = event.end_time + 5*60 + duration
+                @event.end_time = @event.start_time + (@event.duration.to_i) * 60
 
             elsif ((event.start_time >= @event.start_time) && (@event.end_time >= event.start_time))
-              @event.end_time = event.start_time - 5*60
+
+              request = "http://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + pointA + "&destinations=" + pointB
+              response = HTTParty.get(request)
+              if (response["status"] == "OK")
+                duration = response["rows"][0]["elements"][0]["duration"]["value"]
+              else
+                duration = 0
+              end
+
+              @event.end_time = event.start_time - 5*60 - duration
               @event.start_time = @event.end_time - (@event.duration.to_i) * 60
+
             end
         end
       end
