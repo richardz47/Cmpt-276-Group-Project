@@ -33,7 +33,7 @@
       <% if (event.lat != nil && event.long != nil) && (event.start_time.to_date == Date.current) && (event.created_by == current_user.email) %>
 
         console.log(`lat:`,<%= event.lat %>, `lng:`, <%= event.long %>);
-        addMarker({lat:<%= event.lat %>, lng:<%= event.long %>},<% event.location %>,<% event.rawResponse %>);
+        addMarker({lat:<%= event.lat %>, lng:<%= event.long %>},event.location,event.rawResponse);
       <% end %>
       <% end %>
     });
