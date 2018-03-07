@@ -61,7 +61,7 @@
       label: location[0],
 
     });
-    marker.addEventListener('click',function(){infowindow.open(map, marker)});
+    marker.addListener('click',function(){infowindow.open(map, marker)});
   }  
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWTEfQsPN2d_kg8ST-ReFixdVCCIJrrlI&callback=initMap" ></script>
