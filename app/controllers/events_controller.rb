@@ -31,7 +31,7 @@ class EventsController < ApplicationController
 
       @event.lat = x
       @event.long = y
-
+      @event.rawResponse = response
     end
 
     if @event.auto != 'Yes'

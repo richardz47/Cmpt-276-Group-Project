@@ -32,18 +32,26 @@
 
       <% if (event.lat != nil && event.long != nil) && (event.start_time.to_date == Date.current) && (event.created_by == current_user.email) %>
 
-        console.log(`lat:`,<%= event.lat %>, `lng:`, <%= event.long %>, addMarker({lat:<%= event.lat %>, lng:<%= event.long %>}));
-
+        console.log(`lat:`,<%= event.lat %>, `lng:`, <%= event.long %>);
+        addMarker({lat:<%= event.lat %>, lng:<%= event.long %>},event.location,event.rawResponse);
       <% end %>
       <% end %>
     });
   }
 
-  function addMarker(coords){
+  function addMarker(coords,location,rawResponse){
     var marker = new google.maps.Marker({
       position: coords,
-      map: map
+      map: map,
+      label: location[0],
+
     });
+    var infowindow = new google.maps.InfoWindow({
+      content: `<h3>${location}</h3>
+                <p>${rawResponse[results][0]['formatted_address']}</p>
+                `
+    });
+    marker.addEventListener('click',function(){infowindow.open(map, marker)});
   }  
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWTEfQsPN2d_kg8ST-ReFixdVCCIJrrlI&callback=initMap" ></script>
