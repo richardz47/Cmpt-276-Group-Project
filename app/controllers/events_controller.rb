@@ -111,6 +111,20 @@ class EventsController < ApplicationController
     end
   end
 
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+
+    if @event.update(params.require(:event).permit(:name, :start_time, :end_time, :location, :auto, :duration))
+      redirect_to displayevents_path
+    else
+      render 'edit'
+    end
+  end
+
   def display
     if !check_logged_in
       redirect_to root_path

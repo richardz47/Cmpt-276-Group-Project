@@ -21,5 +21,7 @@
 <td><%= link_to 'Delete', event_path(@event),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
+   <%= link_to("Edit", {:controller => 'events',:action => 'edit'}) %>
+
 
 <%= link_to "Back", displayevents_path %>
