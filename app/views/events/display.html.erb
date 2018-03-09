@@ -84,6 +84,9 @@
     <td><%= event.name %></td>
     <td><%= (event.start_time).strftime("%I:%M%p") %></td> 
     <td><%= event.end_time.strftime("%I:%M%p") %></td>
+    <td><%= link_to 'Destroy', event_path(event),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %></td>
   </tr>
   <% end %>
   <% end %>

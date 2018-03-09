@@ -17,6 +17,10 @@ class EventsController < ApplicationController
     @event = Event.new(params.require(:event).permit(:name, :start_time, :end_time, :location, :auto, :duration))
     @event.created_by = current_user.email
 
+    if params[:duration].blank?
+      @event.duration = 30
+    end
+
     #Our Geocode API key
     #AIzaSyBLTBPCqHrovJpQ89hsRLf0V6E0zRtW6so
     
@@ -125,5 +129,10 @@ class EventsController < ApplicationController
       redirect_to root_path
     end
   end
-
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+   
+    redirect_to root_path
+  end
 end

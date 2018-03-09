@@ -18,5 +18,8 @@
   <strong>Location:</strong>
   <%= @event.location %>
 </p>
+<td><%= link_to 'Delete', event_path(@event),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
 
 <%= link_to "Back", displayevents_path %>

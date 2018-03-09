@@ -8,6 +8,9 @@
   <% @event.each do |event| %>
     <tr>
       <td><%= event.name %></td>
+      <td><%= link_to 'Destroy', event_path(event),
+        	method: :delete,
+            data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
 </table>
