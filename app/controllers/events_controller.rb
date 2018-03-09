@@ -17,7 +17,7 @@ class EventsController < ApplicationController
     @event = Event.new(params.require(:event).permit(:name, :start_time, :end_time, :location, :auto, :duration))
     @event.created_by = current_user.email
 
-    if params[:duration].blank?
+    if params[:duration].blank? || params[:duration] == 30
       @event.duration = 30
     end
 
@@ -111,6 +111,14 @@ class EventsController < ApplicationController
     end
   end
 
+  def newfromlist
+    if check_logged_in
+      @event = Event.new
+    else 
+      redirect_to root_path
+    end
+  end
+
   def edit
     @event = Event.find(params[:id])
   end
@@ -149,4 +157,6 @@ class EventsController < ApplicationController
    
     redirect_to root_path
   end
+
+
 end

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<title>New event</title>
+<body>
+<h1>list events</h1>
+
+
+<%= form_with model: @event do |form| %>
+<!-- show error message -->	
+<% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h>
+        <%= pluralize(@event.errors.count, "error") %> 
+      </h>
+      <ul>
+        <% @event.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<!-- form -->
+<div id = "wrap">
+  <div id = "outter">
+  <p>
+    <div class= "t1"><%= form.label :name %></div><br>
+    <div class = "name"><%= form.select :name, ["task1", "task2", "task3", "task4"] , :include_blank => '-select-'%></div>
+  </p>
+
+  <p>
+  	<div class= "t2"><%= form.label :start_time %></div><br>
+  	<div class= "start"><%= form.datetime_select :start_time %></div>
+  </p>
+ 
+ <p>
+    <div class= "t3"><%= form.label :end_time %></div><br>
+    <div class="end"><%= form.datetime_select :end_time  %></div>
+  </p>
+
+  <p>
+  <div class= "t4"><%= form.label :location %></div><br>
+  <div class="location"><%= form.text_field :location  %></div>
+  </p>
+
+  <p>
+  <div class= "t5"><%= form.label :auto %></div><br>
+  </p>
+
+  <p>
+  <div class= "t6"><%= form.label :duration %></div><br>
+  <div class="duration"><%= form.text_field :duration %></div>
+  </p>
+
+  <p>
+    <%= form.submit "Add Event",:id=> "sub"%>
+  </p>
+  </div>
+</div>
+
+  <script type="text/javascript">
+    var a = [
+      "https://upload.wikimedia.org/wikipedia/commons/0/0d/Rakotzbr%C3%BCcke.jpg"/*Liscenced under Creative Commons - see https://commons.wikimedia.org/wiki/File:Rakotzbr%C3%BCcke.jpg*/,
+      "http://www.publicdomainpictures.net/pictures/240000/velka/scenic-landscape-1507476866DSn.jpg"/*Liscenced under Creative Commons - CC0*/,
+      "http://www.publicdomainpictures.net/pictures/50000/velka/the-scenic-route.jpg"/*Liscenced under Creative Commons - CC0*/,
+      "https://upload.wikimedia.org/wikipedia/commons/3/33/Scenic_View_%40_Park_View_Hotel_%E2%80%93_Hualien%2C_Taiwan_%283981419562%29.jpg"/*Liscenced under Creative Commons - see https://commons.wikimedia.org/wiki/File:Scenic_View_@_Park_View_Hotel_%E2%80%93_Hualien,_Taiwan_(3981419562).jpg*/
+      ]
+    document.body.style.backgroundImage = `url(${a[Math.ceil(Math.random()*10000)%a.length]})`;
+  </script>
+
+<% end %>
+</body>
+</html>
