@@ -2,7 +2,7 @@
 <html>
 <title>New event</title>
 <body>
-<h1>list events</h1>
+<h1>Preset Events</h1>
 
 
 <%= form_with model: @event do |form| %>
@@ -48,7 +48,7 @@
   </p>
 
   <p>
-  <div class= "t6"><%= form.label :duration %></div><br>
+  <div class= "t6"><%= form.label :duration, "duration will automatically be set to 30 min" %></div><br>
   <div class="duration"><%= form.text_field :duration %></div>
   </p>
 
