@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   get '/displayevents', to: 'events#display'
 
+  get '/newfromlist', to: 'events#newfromlist'
+
   root 'welcome#home'
 
   get '/about', to: 'welcome#about'
