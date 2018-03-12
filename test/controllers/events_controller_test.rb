@@ -28,7 +28,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
   test "valid new event" do
     @test = users(:test)
     post login_path, params: {email: @test.email, password: '12345'}
-    post newevent_path, params: {event: {name: "test", start_time: DateTime.now, end_time: DateTime.now }}
+    post newevent_path, params: {event: {name: "test", start_time: DateTime.now, end_time: DateTime.now, location: "123 Example Street, BC", auto: "No" }}
     assert_equal(2, Event.count)
     assert_redirected_to event_url(Event.last)
   end
@@ -36,7 +36,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
   test "invalid new event" do
     @test = users(:test)
     post login_path, params: {email: @test.email, password: '12345'}
-    post newevent_path, params: {event: {name: "", start_time: DateTime.now, end_time: DateTime.now }}
+    post newevent_path, params: {event: {name: "", start_time: DateTime.now, end_time: DateTime.now, location: "123 Example Street, BC", auto: "No" }}
     assert_equal(1, Event.count)
   end
 

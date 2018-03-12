@@ -6,3 +6,6 @@ test:
   end_time: 2018-02-24 10:58:29
   created_by: Testing@test.com
   note: MyText
+  location: 123 Example Street, Burnaby, BC
+  auto: No
+  
