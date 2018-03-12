@@ -14,12 +14,9 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(params.require(:event).permit(:name, :start_time, :end_time, :location, :auto, :duration))
+    @event = Event.new(params.require(:event).permit(:name, :start_time, :end_time, :location, :auto))
     @event.created_by = current_user.email
-
-    if params[:duration].blank? || params[:duration] == 30
-      @event.duration = 30
-    end
+    @event.duration = ((@event.end_time - @event.start_time) / 60).to_i
 
     #Our Geocode API key
     #AIzaSyBLTBPCqHrovJpQ89hsRLf0V6E0zRtW6so
@@ -55,10 +52,6 @@ class EventsController < ApplicationController
       #AIzaSyD4UP1Q6w4sV6XDdJgYUbAguPd4YVhPro0
 
       @events = Event.all
-
-      @event.end_time = @event.start_time + (@event.duration.to_i) * 60
-
-      autoDone = false
 
       @events.each do |event|
 
@@ -126,8 +119,57 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
 
-    if @event.update(params.require(:event).permit(:name, :start_time, :end_time, :location, :auto, :duration))
-      redirect_to displayevents_path
+    if @event.update(params.require(:event).permit(:name, :start_time, :end_time, :location, :auto))
+
+      if @event.auto == 'Yes'
+        @events = Event.all
+
+        eventduration = ((@event.end_time - @event.start_time) / 60).to_i
+        @event.update_attributes(duration: eventduration)
+
+        @events.each do |event|
+
+          if (event.id != @event.id)
+
+          pointA = (@event.location).gsub(' ', '+')
+          pointB = (event.location).gsub(' ', '+')
+
+          if event.start_time.to_date == Date.current && event.created_by == current_user.email
+            if ((event.end_time >= @event.start_time) && (@event.end_time >= event.end_time))
+              request = "http://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + pointB + "&destinations=" + pointA
+              response = HTTParty.get(request)
+              if (response["status"] == "OK")
+                duration = response["rows"][0]["elements"][0]["duration"]["value"]
+              else
+                duration = 0
+              end
+
+                @event.update_attributes(start_time: (@event.start_time = event.end_time + 5*60 + duration))
+                @event.update_attributes(end_time: (@event.start_time + (@event.duration.to_i) * 60))
+
+            elsif ((event.start_time >= @event.start_time) && (@event.end_time >= event.start_time))
+
+              request = "http://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + pointA + "&destinations=" + pointB
+              response = HTTParty.get(request)
+              if (response["status"] == "OK")
+                duration = response["rows"][0]["elements"][0]["duration"]["value"]
+              else
+                duration = 0
+              end
+
+              @event.update_attributes(end_time: (event.start_time - 5*60 - duration))
+              @event.update_attributes(start_time: (@event.end_time - (@event.duration.to_i) * 60))
+
+            end
+        end        
+
+      end
+        
+        end
+
+      end
+
+        redirect_to @event
     else
       render 'edit'
     end
@@ -155,7 +197,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event.destroy
    
-    redirect_to root_path
+    redirect_to displayevents_path
   end
 
 
