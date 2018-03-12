@@ -129,7 +129,7 @@ class EventsController < ApplicationController
 
         @events.each do |event|
 
-          if (event.id != @event.id)
+          if ((event.id != @event.id) && (event.created_by == current_user.email))
 
           pointA = (@event.location).gsub(' ', '+')
           pointB = (event.location).gsub(' ', '+')
