@@ -121,6 +121,18 @@ class EventsController < ApplicationController
 
     if @event.update(params.require(:event).permit(:name, :start_time, :end_time, :location, :auto))
 
+      position = @event.location.gsub(' ', '+')
+      request = "http://maps.googleapis.com/maps/api/geocode/json?address=" + position
+      response = HTTParty.get(request)
+  
+      if (response["status"] == "OK")
+  
+        x = response["results"][0]["geometry"]["location"]["lat"]
+        y = response["results"][0]["geometry"]["location"]["lng"]
+  
+        @event.update_attributes(lat: x, long: y)
+      end
+
       if @event.auto == 'Yes'
         @events = Event.all
 
