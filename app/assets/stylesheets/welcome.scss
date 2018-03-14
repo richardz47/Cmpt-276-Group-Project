@@ -105,35 +105,103 @@ body,html,#slider,.wrap,.slideContent
 	margin-right: 20px;
 }
 
+#wrapper_signup{
+	border:thick black solid;
+	border-radius: 20px;
+	width: 200px;
+	margin:30px auto 0 auto;
+	height: 55px;
+	overflow: hidden;
+}
 
+.signup:hover{
+	margin-top:-55px;
+	transition: 0.5s;
+}
 .signup a{
    text-decoration: none !important;
+   text-align: center;
+   line-height:px;
    color: rgb(0,0,0);
-   border: solid;
-   border-width:4.5px;
-   padding: 1px 20px;
+   border: transparent;
+   border-radius: 20px;
+}
+.signup_duo a{
+   text-decoration: none !important;
+   text-align: center;
+   line-height:px;
+   color: rgb(0,153,51);
+   border: transparent;
    border-radius: 20px;
 }
 
+
+
+
+#wrapper_login{
+	border:thick black solid;
+	border-radius: 20px;
+	width: 200px;
+	margin:30px auto 0 auto;
+	height: 55px;
+	overflow: hidden;
+}
+
+.login:hover{
+	margin-top:-55px;
+	transition: 0.5s;
+}
 .login a{
    text-decoration: none !important;
+   text-align: center;
+   line-height:px;
    color: rgb(0,0,0);
-   border: solid;
-   border-width:4.5px;
-   padding: 1px 32px;
+   border: transparent;
+   border-radius: 20px;
+}
+.login_duo a{
+   text-decoration: none !important;
+   text-align: center;
+   line-height:px;
+   color: rgb(0,153,51);
+   border: transparent;
    border-radius: 20px;
 }
 
 
 
+#wrapper_Explore{
+	border-style:solid;
+	border-width:3px;
+	border-color:rgb(102,0,255);
+	border-radius: 20px;
+	width: 400px;
+	margin:30px auto 0 auto;
+	height: 55px;
+	overflow: hidden;
+}
+.Explore:hover{
+	margin-top:-55px;
+	transition: 0.5s;
+}
 .Explore a{
    font-family: 'Hind Madurai', sans-serif;
    font-size: 40px;
    text-decoration: none !important;
-   color: rgb(102, 102, 255);
-   border: solid;
-   border-width:4.5px;
-   padding: 10px 32px;
+   text-align: center;
+   line-height:px;
+   color: rgb(102,0,255);
+   border: transparent;
+   border-radius: 20px;
+}
+.Explore_duo a{
+   font-family: 'Hind Madurai', sans-serif;
+   font-size: 40px;
+   text-decoration: none !important;
+   text-align: center;
+   line-height:px;
+   color: rgb(0,153,51);
+   border: transparent;
    border-radius: 20px;
 }
 

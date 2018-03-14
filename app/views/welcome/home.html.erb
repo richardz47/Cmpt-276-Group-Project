@@ -10,14 +10,28 @@
 				<div class="slide slide1">
 					<div class="slideContent">
 						<span class="span1">Welcome to AutoCalendar
+								
 								<% if !(check_logged_in) %>
-									<p class = "signup">
-										<%= link_to("Sign up", {:controller => 'users',:action => 'new'}) %>
-									</p> 
-		
-									<p class = "login">
-										<%= link_to("Log in", {:controller => 'sessions',	:action => 'new'}) %>
-									</p>
+									<div id = "wrapper_signup">
+										<div class = "signup">
+											<%= link_to("Sign up", {:controller => 'users',:action => 'new'}) %> 
+										<div class = "signup_duo">
+											<%= link_to("Sign up", {:controller => 'users',:action => 'new'}) %>
+										</div>
+										</div>
+									</div>
+
+
+									<div id = "wrapper_login">
+										<div class = "login">
+											<%= link_to("Log in", {:controller => 'sessions',	:action => 'new'}) %>
+										<div class = "login_duo">
+											<%= link_to("Log in", {:controller => 'sessions',	:action => 'new'}) %>
+										</div>
+										</div>>
+									</div>
+
+
 								<% else %>
 									<p> Already logged in, so nothing should display here. </p>
 								<% end %>
@@ -33,8 +47,12 @@
 
 				<div class="slide slide3">
 					<div class="slideContent">
-						<span class="span3">
-							<p class = "Explore"><%= link_to "Explore More", about_path %></span></p>
+					<div id = "wrapper_Explore">
+							<div class = "Explore"><%= link_to "Explore More", about_path %>
+							<div class = "Explore_duo"><%= link_to "Explore More", about_path %>
+						</div>
+						</div>
+					</div>
 					</div>
 				</div>
 			</div>
