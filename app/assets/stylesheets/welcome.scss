@@ -96,6 +96,8 @@ body,html,#slider,.wrap,.slideContent
 	border-color: transparent white transparent transparent;
 	left: 0;
 	margin-left: 20px;
+	opacity:0.4;
+	transition: opacity 0.1s linear;
 }
 
 #arrowR{
@@ -103,8 +105,12 @@ body,html,#slider,.wrap,.slideContent
 	border-color: transparent transparent transparent white;
 	right: 0;
 	margin-right: 20px;
+	opacity:0.4;
+	transition: opacity 0.1s linear;
 }
-
+#arrowR:hover, #arrowL:hover{
+	opacity: 1;
+}
 #wrapper_signup{
 	border:thick black solid;
 	border-radius: 20px;
