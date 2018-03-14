@@ -32,14 +32,16 @@
 
       <% if (event.lat != nil && event.long != nil) && (event.start_time.to_date == Date.current) && (event.created_by == current_user.email) %>
 
+        var info = '<h3><%= event.name %></h3>' + '<p>Location: <%= event.location%></p>' + 
+                    '<p>Start: <%= (event.start_time).strftime("%I:%M%p") %></p>' + '<p>End: <%= event.end_time.strftime("%I:%M%p") %></p>';
         console.log(`lat:`,<%= event.lat %>, `lng:`, <%= event.long %>);
-        addMarker({lat:<%= event.lat %>, lng:<%= event.long %>});
+        addMarker({lat:<%= event.lat %>, lng:<%= event.long %>}, info);
       <% end %>
       <% end %>
     });
   }
 
-  function addMarker(coords){
+  function addMarker(coords, info){
 
     var geocoder = new google.maps.Geocoder;
 
@@ -50,7 +52,7 @@
     geocoder.geocode({'location': coords}, function(results, status) {
       if (status === 'OK') {
         if (results[0]) {
-          infowindow.setContent(`<h3>${results[0]['address_components'][0].short_name}</h3>` + `<p>${results[0].formatted_address}</p>`);
+          infowindow.setContent(info);
         }
       }
     });
@@ -84,7 +86,7 @@
     <td><%= event.name %></td>
     <td><%= (event.start_time).strftime("%I:%M%p") %></td> 
     <td><%= event.end_time.strftime("%I:%M%p") %></td>
-    <td><%= link_to 'Destroy', event_path(event),
+    <td><%= link_to 'Delete', event_path(event),
         method: :delete,
         data: { confirm: 'Are you sure?' } %></td>
     <td><%= link_to 'Edit', edit_event_path(event) %></td>
