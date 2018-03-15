@@ -24,7 +24,11 @@
       center: {lat: 49.252612, lng: -123.122183},
       zoom: 12
     });
-
+    navigator.geolocation.getCurrentPosition(function(position){
+      if(navigator.geolocation){
+        map.panTo({lat: position.coords.latitude ,lng: position.coords.longitude});
+      }
+    }
     google.maps.event.addListenerOnce(map, 'idle', function(){
       // do something only the first time the map is loaded
       console.log("Map ready");
