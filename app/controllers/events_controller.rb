@@ -14,9 +14,8 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(params.require(:event).permit(:name, :start_time, :end_time, :location, :auto))
+    @event = Event.new(params.require(:event).permit(:name, :start_time, :end_time, :location, :auto, :duration))
     @event.created_by = current_user.email
-    @event.duration = ((@event.end_time - @event.start_time) / 60).to_i
 
     #Our Geocode API key
     #AIzaSyBLTBPCqHrovJpQ89hsRLf0V6E0zRtW6so
@@ -36,6 +35,8 @@ class EventsController < ApplicationController
 
     if @event.auto != 'Yes'
 
+      @event.duration = ((@event.end_time - @event.start_time) / 60).to_i
+
       respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event added!' }
@@ -47,6 +48,9 @@ class EventsController < ApplicationController
       end
 
     else
+
+
+      @event.end_time = @event.start_time + (@event.duration.to_i * 60)
 
       #Our Google direction API key
       #AIzaSyD4UP1Q6w4sV6XDdJgYUbAguPd4YVhPro0
@@ -119,7 +123,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
 
-    if @event.update(params.require(:event).permit(:name, :start_time, :end_time, :location, :auto))
+    if @event.update(params.require(:event).permit(:name, :start_time, :end_time, :location, :auto, :duration))
 
       position = @event.location.gsub(' ', '+')
       request = "http://maps.googleapis.com/maps/api/geocode/json?address=" + position
@@ -134,10 +138,10 @@ class EventsController < ApplicationController
       end
 
       if @event.auto == 'Yes'
-        @events = Event.all
 
-        eventduration = ((@event.end_time - @event.start_time) / 60).to_i
-        @event.update_attributes(duration: eventduration)
+        @event.update_attributes(end_time: (@event.start_time + (@event.duration.to_i * 60)))
+
+        @events = Event.all
 
         @events.each do |event|
 
