@@ -1,3 +1,24 @@
 // Place all the styles related to the Events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+a[href="/newevent"], a[href="/newfromlist"]{
+    padding: 5px 5px 5px 5px;
+    display: inline-block;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    margin-left: 10px;
+    color: black;
+    font-size: 25px;
+    text-decoration: none;
+    background-color: rgba(200,200,200,0.8);
+    font-family: Arial, Helvetica, sans-serif;
+}
+#eventdesc > tbody > tr > td > a{
+  color: blue;
+  text-decoration: none;
+}
+#eventdesc >tbody>tr > td,#eventdesc >tbody>tr > th{
+  padding-right: 25px;
+  padding-left: 5px;
+} 
