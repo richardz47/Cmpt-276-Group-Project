@@ -49,6 +49,9 @@ class EventsController < ApplicationController
 
     else
 
+      automationComplete = false
+      totalCount = 0 
+      count = 0
 
       @event.end_time = @event.start_time + (@event.duration.to_i * 60)
 
@@ -57,6 +60,14 @@ class EventsController < ApplicationController
 
       @events = Event.all
 
+      @events.each do |event|
+        if event.start_time.to_date == Date.current && event.created_by == current_user.email
+          totalCount = totalCount + 1
+        end 
+      end
+
+      while !(automationComplete)
+        count = 0
       @events.each do |event|
 
         pointA = (@event.location).gsub(' ', '+')
@@ -99,10 +110,18 @@ class EventsController < ApplicationController
   
                   @event.start_time = event.end_time + 5*60 + duration
                   @event.end_time = @event.start_time + (@event.duration.to_i) * 60
+            else 
+              count = count + 1
 
             end
         end
       end
+
+      if (count == totalCount)
+        automationComplete = true
+      end
+
+    end 
 
 
       respond_to do |format|    
