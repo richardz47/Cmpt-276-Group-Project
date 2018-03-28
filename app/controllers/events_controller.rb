@@ -188,6 +188,18 @@ class EventsController < ApplicationController
               @event.update_attributes(end_time: (event.start_time - 5*60 - duration))
               @event.update_attributes(start_time: (@event.end_time - (@event.duration.to_i) * 60))
 
+            elsif ((event.end_time >= @event.end_time) && (event.start_time <= @event.start_time))
+              request = "http://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + pointB + "&destinations=" + pointA
+              response = HTTParty.get(request)
+              if (response["status"] == "OK")
+                duration = response["rows"][0]["elements"][0]["duration"]["value"]
+              else
+                duration = 0
+              end
+
+              @event.update_attributes(start_time: (@event.start_time = event.end_time + 5*60 + duration))
+              @event.update_attributes(end_time: (@event.start_time + (@event.duration.to_i) * 60))
+              
             end
         end        
 
