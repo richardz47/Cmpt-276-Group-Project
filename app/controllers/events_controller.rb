@@ -130,10 +130,14 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+
+    if (!(check_logged_in) || (@event.created_by != current_user))
+      redirect_to displayevents_path
+    end 
   end
 
   def update
-    @event = Event.find(params[:id])
+    @event = Event.find(params[:id]) 
 
     if @event.update(params.require(:event).permit(:name, :start_time, :end_time, :location, :auto, :duration))
 
@@ -199,7 +203,7 @@ class EventsController < ApplicationController
 
               @event.update_attributes(start_time: (@event.start_time = event.end_time + 5*60 + duration))
               @event.update_attributes(end_time: (@event.start_time + (@event.duration.to_i) * 60))
-              
+
             end
         end        
 
