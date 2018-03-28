@@ -131,7 +131,7 @@ class EventsController < ApplicationController
   def edit
     @event = Event.find(params[:id])
 
-    if (!(check_logged_in) || (@event.created_by != current_user))
+    if !((check_logged_in) || (@event.created_by != current_user))
       redirect_to displayevents_path
     end 
   end
