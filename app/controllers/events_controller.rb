@@ -14,7 +14,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(params.require(:event).permit(:name, :start_time, :end_time, :location, :auto))
+    @event = Event.new(params.require(:event).permit(:name, :start_time, :end_time, :location, :auto, :note))
     @event.created_by = current_user.email
 
     #Our Geocode API key
@@ -138,7 +138,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id]) 
 
-    if @event.update(params.require(:event).permit(:name, :start_time, :end_time, :location, :auto, :duration))
+    if @event.update(params.require(:event).permit(:name, :start_time, :end_time, :location, :auto, :duration, :note))
 
       position = @event.location.gsub(' ', '+')
       request = "http://maps.googleapis.com/maps/api/geocode/json?address=" + position
