@@ -54,7 +54,11 @@ class EventsController < ApplicationController
     else
 
       @event.end_time = @event.start_time + (@event.duration.to_i * 60)
-
+      
+      if(@event.end_time < @event.start_time)
+        @event.end_time = @event.start_time + 60*30
+      end
+    
       #Our Google direction API key
       #AIzaSyD4UP1Q6w4sV6XDdJgYUbAguPd4YVhPro0
 
