@@ -33,13 +33,15 @@ class EventsController < ApplicationController
       @event.long = y
     end
 
+      if !(@event.end_time > @event.start_time)
+        @event.end_time = @event.start_time + 60*30
+      end
     @event.duration = ((@event.end_time - @event.start_time) / 60).to_i
+
 
     if @event.auto != 'Yes'
 
-     if(@event.end_time < @event.start_time)
-        @event.end_time = @event.start_time + 60*30
-      end
+
       
       respond_to do |format|
       if @event.save
@@ -55,9 +57,7 @@ class EventsController < ApplicationController
 
       @event.end_time = @event.start_time + (@event.duration.to_i * 60)
       
-      if(@event.end_time < @event.start_time)
-        @event.end_time = @event.start_time + 60*30
-      end
+
     
       #Our Google direction API key
       #AIzaSyD4UP1Q6w4sV6XDdJgYUbAguPd4YVhPro0
