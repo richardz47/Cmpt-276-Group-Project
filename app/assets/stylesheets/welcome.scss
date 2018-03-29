@@ -37,6 +37,7 @@ body,html,#slider,.wrap,.slideContent
 	width: 100%;
 }
 
+
 .wrap{
 	position:relative
 }
@@ -60,11 +61,13 @@ body,html,#slider,.wrap,.slideContent
 }
 
 
+
+
 .slideContent{
 	display:flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: cneter;
+	align-items: center;
 	text-align: center;
 }
 

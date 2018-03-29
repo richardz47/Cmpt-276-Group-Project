@@ -65,6 +65,8 @@
 			var	arrowR = document.getElementById('arrowR');
 			var arrowL = document.getElementById('arrowL');
 			var current = 0;
+			var pre;
+			var after;
 
 			function reset()
 			{
@@ -94,6 +96,7 @@
 			arrowL.addEventListener('click',function(){
 				if(current === 0){
 					current = sliderImages.length;
+					pre = document.getElementByClassName()
 				}
 				slideLeft();
 			})
