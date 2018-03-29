@@ -32,7 +32,7 @@
 
   <body>
     <div class="banner">
-      <%= link_to "AutoCalender (Logo for app goes here)", root_path, id: "logo" %>
+      <%= link_to image_tag("IMG_2634.JPG", border: 5, width:55, height:55), root_path, id: "logo" %>
       <% if check_logged_in %>
         <%= link_to "My Calendar", displayevents_path %>
         <%= link_to "My Profile", current_user %>
