@@ -81,7 +81,7 @@
     <th>Location</th>
   </tr>
 
-  <% @events.each do |event| %>
+  <% @events.sort_by{|event| event.start_time.strftime('%H:%M')}.each do |event| %>
 
   
   <% if event.start_time.to_date == Date.current %>
