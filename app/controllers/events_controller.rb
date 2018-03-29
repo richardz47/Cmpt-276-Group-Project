@@ -14,7 +14,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(params.require(:event).permit(:name, :start_time, :end_time, :location, :auto, :duration))
+    @event = Event.new(params.require(:event).permit(:name, :start_time, :end_time, :location, :auto))
     @event.created_by = current_user.email
 
     #Our Geocode API key
@@ -33,9 +33,9 @@ class EventsController < ApplicationController
       @event.long = y
     end
 
-    if @event.auto != 'Yes'
+    @event.duration = ((@event.end_time - @event.start_time) / 60).to_i
 
-      @event.duration = ((@event.end_time - @event.start_time) / 60).to_i
+    if @event.auto != 'Yes'
 
       respond_to do |format|
       if @event.save
@@ -49,7 +49,6 @@ class EventsController < ApplicationController
 
     else
 
-      @event.duration = 30
       @event.end_time = @event.start_time + (@event.duration.to_i * 60)
 
       #Our Google direction API key
