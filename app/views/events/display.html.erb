@@ -88,7 +88,7 @@
   <% if event.created_by == current_user.email %>
 
   <tr>
-    <td><%= event.name %></td>
+    <td><%= link_to event.name, event %></td>
     <td><%= (event.start_time).strftime("%I:%M%p") %></td> 
     <td><%= event.end_time.strftime("%I:%M%p") %></td>
     <td><%= event.location %></td>
