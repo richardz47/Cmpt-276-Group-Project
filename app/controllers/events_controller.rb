@@ -49,7 +49,7 @@ class EventsController < ApplicationController
 
     else
 
-
+      @event.duration = 30
       @event.end_time = @event.start_time + (@event.duration.to_i * 60)
 
       #Our Google direction API key
