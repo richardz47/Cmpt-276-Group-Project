@@ -161,6 +161,10 @@ class EventsController < ApplicationController
         @event.update_attributes(lat: x, long: y)
       end
 
+      if !(@event.end_time > @event.start_time)
+        @event.end_time = @event.start_time + 60*30
+      end
+      
       if @event.auto == 'Yes'
 
         @event.update_attributes(end_time: (@event.start_time + (@event.duration.to_i * 60)))
