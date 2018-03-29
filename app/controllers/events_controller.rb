@@ -37,6 +37,10 @@ class EventsController < ApplicationController
 
     if @event.auto != 'Yes'
 
+     if(@event.end_time < @event.start_time)
+        @event.end_time = @event.start_time + 60*30
+      end
+      
       respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event added!' }
